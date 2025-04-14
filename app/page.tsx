@@ -14,6 +14,7 @@ export default function Home() {
     }
     const res = await createNewUrl(url, alias);
     setResult(res);
+    console.log(res);
   };
   
   return (

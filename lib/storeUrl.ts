@@ -7,7 +7,21 @@ export default async function storeUrl(url: string, alias: string): Promise<stri
     try {
         new URL(url);
     } catch (e) {
-        return "Error: Invalid URL";
+        return "Error: Invalid URL, format incorrect";
+    }
+    const urlRes = await fetch(url, { method: "HEAD" })
+        .then((res) => {
+            console.log("Response: ", res.status);
+            if (res.status < 200 || res.status > 500) {
+                return "Error";
+            }
+        })
+        .catch((e) => {
+            console.log("Error: ", e);
+            return "Error";
+        })
+    if (urlRes === "Error") {
+        return "Error: URL not reachable";
     }
     const shortUrl = {
         alias: alias,
@@ -16,7 +30,6 @@ export default async function storeUrl(url: string, alias: string): Promise<stri
     const urlCollection = await getCollection(URL_COLLECTION);
     const existingUrl = await urlCollection.findOne({ alias: shortUrl.alias });
     if (existingUrl) {
-        alert("Alias already exists");
         return "Error: Alias already exists";
     }
     const res = await urlCollection.insertOne({...shortUrl});
