@@ -2,7 +2,7 @@
 import getCollection, { URL_COLLECTION } from "@/db";
 import { ShortenedUrlProps } from "@/types";
 
-export default async function storeUrl(url: string, alias: string): Promise<string> {
+export default async function storeUrl(url: string, alias: string): Promise<ShortenedUrlProps | string> {
     console.log("Storing new URL");
     try {
         new URL(url);
@@ -36,5 +36,5 @@ export default async function storeUrl(url: string, alias: string): Promise<stri
     if (!res.acknowledged) {
         return "Error: Failed to store URL";
     }
-    return "Success";
+    return {...shortUrl};
 }
