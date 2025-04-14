@@ -2,8 +2,13 @@
 import getCollection, { URL_COLLECTION } from "@/db";
 import { ShortenedUrlProps } from "@/types";
 
-export default async function createNewUrl(url: string, alias: string): Promise<String> {
+export default async function storeUrl(url: string, alias: string): Promise<string> {
     console.log("Storing new URL");
+    try {
+        new URL(url);
+    } catch (e) {
+        return "Error: Invalid URL";
+    }
     const shortUrl = {
         alias: alias,
         url: url,
