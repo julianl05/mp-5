@@ -40,7 +40,7 @@ export default function Home() {
         <div className="flex flex-col w-full">
           <label htmlFor="alias-input" className="mt-[1vh]">Alias</label> 
           <div className="flex flex-row items-center pb-[1vw]">
-            <p className="text-gray-100">http://localhost:3001/</p>
+            <p className="text-gray-100">https://mp-5-gules.vercel.app/</p>
             <input 
               id="alias-input"
               type="text"
@@ -57,7 +57,7 @@ export default function Home() {
           ) : result ? (
             <div className="p-[1vw] my-[2vh] bg-[#383d47]">
               <p className="text-green-300 text-center">Success!</p>
-              <p className="text-green-300 text-center">http://localhost:3001/{result?.alias}</p>
+              <p className="text-green-300 text-center">https://mp-5-gules.vercel.app/{result?.alias}</p>
             </div>
           ): null
         }
