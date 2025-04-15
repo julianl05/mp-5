@@ -16,7 +16,9 @@ export default function Home() {
     const res = await createNewUrl(url, alias);
     if (typeof res === "string") {
       setError(res);
+      setResult(undefined);
     } else {
+      setError("");
       setResult(res);
     }
     return;

@@ -30,6 +30,7 @@ export default async function storeUrl(url: string, alias: string): Promise<Shor
     };
     const urlCollection = await getCollection(URL_COLLECTION);
     const existingUrl = await urlCollection.findOne({ alias: shortUrl.alias });
+    console.log("Existing URL: ", existingUrl);
     if (existingUrl) {
         return "Error: Alias already exists";
     }
