@@ -1,6 +1,5 @@
 "use server";
 import getCollection, { URL_COLLECTION } from "@/db";
-import { ShortenedUrlProps } from "@/types";
 
 export default async function getUrl(alias: string | string[] | undefined): Promise<string> {
     console.log(alias);
