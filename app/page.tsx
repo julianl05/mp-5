@@ -52,13 +52,14 @@ export default function Home() {
           </div>
         </div>
         <button type="submit" className="text-[calc(8px+1vw)] w-full bg-[#76ABAE] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">Shorten</button>
-        {error ? 
-          <p className="text-red-300 text-center mt-[2vh]">{error}</p> 
-          : 
-          <div className="p-[1vw] my-[2vh] bg-[#383d47]">
-            <p className="text-green-300 text-center">Success!</p>
-            <p className="text-green-300 text-center">http://localhost:3001/{result?.alias}</p>
-          </div>
+        {error ? (
+            <p className="text-red-300 text-center mt-[2vh]">{error}</p> 
+          ) : result ? (
+            <div className="p-[1vw] my-[2vh] bg-[#383d47]">
+              <p className="text-green-300 text-center">Success!</p>
+              <p className="text-green-300 text-center">http://localhost:3001/{result?.alias}</p>
+            </div>
+          ): null
         }
       </form>
     </div>
