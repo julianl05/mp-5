@@ -38,6 +38,7 @@ export default function Home() {
             value={url}
             placeholder="https://example.com/url"
             onChange={(e) => setUrl(e.target.value)}
+            required
             className="border-2 border-gray-500 rounded-md p-[0.5vw] my-[2vh] w-full text-[calc(5px+1vw)] text-gray-100"
           />
         </div>
@@ -51,6 +52,7 @@ export default function Home() {
               value={alias}
               placeholder="example"
               onChange={(e) => setAlias(e.target.value)}
+              required
               className="flex-shrink flex-1 border-2 border-gray-500 rounded-md p-[0.5vw] ml-[1vw] text-gray-400" //flex-shrink should let input width shrink if there is less room and flex-1 should let it grow if there is more room
             />
           </div>
