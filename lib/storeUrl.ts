@@ -7,7 +7,7 @@ export default async function storeUrl(url: string, alias: string): Promise<Shor
     try {
         new URL(url);
     } catch (e) {
-        // console.log("Error: ", e);
+        console.log("Error: ", e);
         return "Error: Invalid URL, format incorrect";
     }
     const urlRes = await fetch(url, { method: "HEAD" })
@@ -18,7 +18,7 @@ export default async function storeUrl(url: string, alias: string): Promise<Shor
             }
         })
         .catch((e) => {
-            // console.log("Error: ", e);
+            console.log("Error: ", e);
             return "Error";
         })
     if (urlRes === "Error") {
