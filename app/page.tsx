@@ -10,7 +10,9 @@ export default function Home() {
   async function handleClick(event: React.FormEvent) {
     event.preventDefault();
     if (url === "" || alias === "") {
-      console.log("Please enter a url");
+      // console.log("Please enter a url");
+      setError("Please enter a url and alias");
+      setResult(undefined);
       return;
     }
     const res = await createNewUrl(url, alias);
