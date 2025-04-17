@@ -5,10 +5,10 @@ import { ShortenedUrlProps } from "@/types";
 export default async function storeUrl(url: string, alias: string): Promise<ShortenedUrlProps | string> {
     console.log("Storing new URL");
     // checking url is valid format
-    if (/\s/.test(url)) {
+    if (/\s/.test(url)) { //using regex to check for any whitespace in the url
         return "Error: Invalid URL, format incorrect";
     }
-    try {
+    try { //testing if url is valid (this doesn't check for whitespace so previous check is needed)
         new URL(url);
     } catch (e) {
         console.log("Error: ", e);
