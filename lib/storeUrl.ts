@@ -4,12 +4,17 @@ import { ShortenedUrlProps } from "@/types";
 
 export default async function storeUrl(url: string, alias: string): Promise<ShortenedUrlProps | string> {
     console.log("Storing new URL");
+    // checking url is valid format
+    if (/\s/.test(url)) {
+        return "Error: Invalid URL, format incorrect";
+    }
     try {
         new URL(url);
     } catch (e) {
         console.log("Error: ", e);
         return "Error: Invalid URL, format incorrect";
     }
+    //checking url is reachable by checking returned status code
     const urlRes = await fetch(url, { method: "HEAD" })
         .then((res) => {
             // console.log("Response: ", res.status);
@@ -24,6 +29,7 @@ export default async function storeUrl(url: string, alias: string): Promise<Shor
     if (urlRes === "Error") {
         return "Error: URL not reachable";
     }
+    //inserting into database
     const shortUrl = {
         alias: alias,
         url: url,
