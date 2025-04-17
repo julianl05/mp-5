@@ -28,8 +28,8 @@ export default function Home() {
   
   return (
     <div>
-      <form onSubmit={handleClick} className="flex flex-col rounded-3xl w-[60vw] my-[15vh] px-[2vw] py-[5vh] justify-self-center bg-[#31363F] shadow-lg">
-        <h1 className="text-[calc(3px+2vw)] w-full text-center">URL Shortener</h1>
+      <form onSubmit={handleClick} className="flex flex-col rounded-3xl w-[60vw] my-[15vh] px-[2vw] py-[5vh] justify-self-center bg-[#213555] shadow-lg border-4 border-[#D8C4B6]">
+        <h1 className="text-[calc(3px+2vw)] w-full text-center">Shorten Your Urls</h1>
         <div className="flex flex-col w-full">
           <label htmlFor="url-input" className="mt-[2vh]">URL</label> 
           <input 
@@ -57,7 +57,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <button type="submit" className="text-[calc(3px+1.5vw)] w-full bg-[#76ABAE] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">Shorten</button>
+        <button type="submit" className="text-[calc(3px+1.5vw)] w-full bg-[#4065a1] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">Shorten</button>
         {error ? (
             <p className="text-red-300 text-center mt-[2vw]">{error}</p> 
           ) : result ? (

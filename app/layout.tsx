@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
+import Header from "@/components/Header";
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,7 +20,8 @@ export default function RootLayout({
 }>) {
   return(
     <html lang="en">
-      <body className={`${geistMono.className} bg-[#222831] text-white text-[calc(3px+1vw)]`}>
+      <body className={`${geistMono.className} bg-[#F5EFE7] text-white text-[calc(3px+1vw)]`}>
+        <Header/>
         {children}
       </body>
     </html>
