@@ -7,19 +7,26 @@ export default function Home() {
   const [alias, setAlias] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [result, setResult] = useState<ShortenedUrlProps>();
+  const [loading, setLoading] = useState<boolean>(false);
   async function handleClick(event: React.FormEvent) {
     event.preventDefault();
     if (url === "" || alias === "") {
-      // console.log("Please enter a url");
       setError("Please enter a url and alias");
       setResult(undefined);
       return;
     }
+    //resetting displayed result
+    setError("");
+    setResult(undefined);
+    setLoading(true);
+    //attempting to store new url
     const res = await createNewUrl(url, alias);
     if (typeof res === "string") {
+      setLoading(false);
       setError(res);
       setResult(undefined);
     } else {
+      setLoading(false);
       setError("");
       setResult(res);
     }
@@ -57,7 +64,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <button type="submit" className="text-[calc(3px+1.5vw)] w-full bg-[#4065a1] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">Shorten</button>
+        <button type="submit" className="text-[calc(3px+1.5vw)] w-full bg-[#4065a1] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">{loading ? "Shortening..." : "Shorten"}</button>
         {error ? (
             <p className="text-red-300 text-center mt-[2vw]">{error}</p> 
           ) : result ? (
