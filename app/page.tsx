@@ -8,6 +8,8 @@ export default function Home() {
   const [error, setError] = useState<string>("");
   const [result, setResult] = useState<ShortenedUrlProps>();
   const [loading, setLoading] = useState<boolean>(false);
+
+  
   async function handleClick(event: React.FormEvent) {
     event.preventDefault();
     if (url === "" || alias === "") {
@@ -32,6 +34,7 @@ export default function Home() {
     }
     return;
   };
+  
   
   return (
     <div>
@@ -66,11 +69,11 @@ export default function Home() {
         </div>
         <button type="submit" className="text-[calc(3px+1.5vw)] w-full bg-[#4065a1] p-[1vw] rounded-2xl hover:bg-gray-500 hover:cursor-pointer active:bg-gray-600">{loading ? "Shortening..." : "Shorten"}</button>
         {error ? (
-            <p className="text-red-300 text-center mt-[2vw]">{error}</p> 
+            <p className="text-red-400 text-center mt-[2vw]">{error}</p> 
           ) : result ? (
-            <div className="p-[1vw] my-[2vh] bg-[#383d47]">
-              <p className="text-green-300 text-center">Success!</p>
-              <p className="text-green-300 text-center">https://mp-5-gules.vercel.app/{result?.alias}</p>
+            <div className="p-[1vw] my-[2vh] bg-[#2f4b78] text-center">
+              <p className="text-green-400">Success!</p>
+              <a href={`https://mp-5-gules.vercel.app/${result?.alias}`} target="_blank" className="text-green-400 hover:underline hover:text-blue-400">https://mp-5-gules.vercel.app/{result?.alias}</a>
             </div>
           ): null
         }
